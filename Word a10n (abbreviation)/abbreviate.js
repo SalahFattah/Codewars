@@ -15,16 +15,36 @@ will split up a series of letters into two words (eg. "elephant" and "ride").
 
 
 function abbreviate(string){
-    // let alpha="abcdefghijklmnopqrstuvwxyz";
+    let alpha="abcdefghijklmnopqrstuvwxyz";
     let strArr=string.split(" ");
     let newArr=[];
     for(let i of strArr){
-        if (i.length>=4){
+        if (i.length>=4 && /^[a-zA-Z-]+$/.test(i)){
+            if(i.includes("-")){
+                let newWord=i.split("-");
+                let innerArr=[];
+                for (let j of newWord){
+                    if(j.length>=4){
+                        let slicedString=j.slice(1,j.length-1);
+                        let word=`${j[0]}${slicedString.length}${j[j.length-1]}`;
+                        innerArr.push(word);
+                        
+                    }else{
+                        innerArr.push(j);
+                    }
+                }
+                let joinedWord=innerArr.join("-");
+                newArr.push(joinedWord);
+            }
             let slicedString=i.slice(1,i.length-1);
             let word=`${i[0]}${slicedString.length}${i[i.length-1]}`;
             newArr.push(word);
+            console.log(newArr)
+        }else{
+            newArr.push(i);
         }
     }
     console.log(newArr);
+    return 
 }
-abbreviate("internationalization");
+console.log(abbreviate("elephant-rides are really fun!"));
