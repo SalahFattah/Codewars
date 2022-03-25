@@ -19,9 +19,9 @@ function abbreviate(string){
     let strArr=string.split(" ");
     let newArr=[];
     for(let i of strArr){
-        if (i.length>=4 && /^[a-zA-Z-]+$/.test(i)){
-            if(i.includes("-")){
-                let newWord=i.split("-");
+        if (i.length>=4 && !(/^[^a-zA-Z]+$/.test(i))){
+            let splitter=/[^a-zA-Z]+/.exec(i);
+                let newWord=i.split(splitter);
                 let innerArr=[];
                 for (let j of newWord){
                     if(j.length>=4){
@@ -33,18 +33,14 @@ function abbreviate(string){
                         innerArr.push(j);
                     }
                 }
-                let joinedWord=innerArr.join("-");
+                let joinedWord=innerArr.join(splitter);
                 newArr.push(joinedWord);
-            }else{
-            let slicedString=i.slice(1,i.length-1);
-            let word=`${i[0]}${slicedString.length}${i[i.length-1]}`;
-            newArr.push(word);
-            }
-            // console.log(newArr)
+                console.log(newArr);
+            
         }else{
             newArr.push(i);
         }
     }
     return newArr.join(" ");
 }
-console.log(abbreviate("elephant-rides are really fun!"));
+console.log(abbreviate("You need, need not want, to complete this code-wars mission"));
