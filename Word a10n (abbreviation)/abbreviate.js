@@ -35,16 +35,16 @@ function abbreviate(string){
                 }
                 let joinedWord=innerArr.join("-");
                 newArr.push(joinedWord);
-            }
+            }else{
             let slicedString=i.slice(1,i.length-1);
             let word=`${i[0]}${slicedString.length}${i[i.length-1]}`;
             newArr.push(word);
-            console.log(newArr)
+            }
+            // console.log(newArr)
         }else{
             newArr.push(i);
         }
     }
-    console.log(newArr);
-    return 
+    return newArr.join(" ");
 }
 console.log(abbreviate("elephant-rides are really fun!"));
