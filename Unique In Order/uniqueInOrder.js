@@ -1,8 +1,8 @@
-function uniqueInOrder(str){
+function uniqueInOrder(iter){
     let arr=[];
-    for (let i=0;i<str.length;i++){
-        arr.includes(str[i])||arr.push(str[i]);
+    for (let i=0;i<iter.length;i++){
+        iter[i]===iter[i+1]||arr.push(iter[i]);
     }
     return arr;
 }
-console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+console.log(uniqueInOrder("AAAABBBCCDAABBB"));
