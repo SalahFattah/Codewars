@@ -40,7 +40,7 @@ function mazeRunner(maze, directions) {
                         result="Lost";
                     }
                     
-                    // console.log(currentPosition);
+                    // console.log(result);
                     
                     break;
                 case "S":
@@ -51,9 +51,12 @@ function mazeRunner(maze, directions) {
                         result="Dead";
                     }else if(currentRow[currentPosition]===3){
                         result="Finish";
+                        
                     }else{
                         result="Lost";
                     }
+                    // console.log(result);
+
                         
                     break;
                 case "E":
@@ -67,7 +70,8 @@ function mazeRunner(maze, directions) {
                         result="Lost";
                     }
                     
-                    
+                    // console.log(result);
+
                     // console.log(currentPosition);
                     
                     break;
@@ -78,13 +82,18 @@ function mazeRunner(maze, directions) {
                         result="Dead";
                     }else if(currentRow[currentPosition]===3){
                         result="Finish";
+                       
                     }else{
                         result="Lost";
                     }
-                    
+                    // console.log(result);
+
                     // console.log(currentPosition);
                     
                     break;
+            }
+            if(result==="Finish"){
+                return result;
             }
         }
         
@@ -99,4 +108,4 @@ return result;
             [1,0,1,0,1,0,1],
             [1,0,0,0,0,0,1],
             [1,2,1,0,1,0,1]];
-console.log(mazeRunner(maze,["N","N","N","W","W"]));
+console.log(mazeRunner(maze,["N","N","N","N","N","E","E","E","E","E","W","W"]));
