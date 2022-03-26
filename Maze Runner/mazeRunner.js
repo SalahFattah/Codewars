@@ -94,6 +94,8 @@ function mazeRunner(maze, directions) {
             }
             if(result==="Finish"){
                 return result;
+            }else if(result==="Dead"){
+                return result;
             }
         }
         
@@ -108,4 +110,4 @@ return result;
             [1,0,1,0,1,0,1],
             [1,0,0,0,0,0,1],
             [1,2,1,0,1,0,1]];
-console.log(mazeRunner(maze,["N","N","N","N","N","E","E","E","E","E","W","W"]));
+console.log(mazeRunner(maze,["N","N","N","N","N","E","E","S","S","E","E","N","N","E"]));
