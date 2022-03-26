@@ -2,17 +2,27 @@ function mazeRunner(maze, directions) {
     // Code here
     let width=maze.length;
     let startPosition;
-    let row=0;
+    let finishPosition;
+    let startRow=0;
+    let finishRow=0;
     for(let arr of maze){
-        if(arr.find(i=>i===2)){
-            startPosition=arr.find(i=>i===2);
-            break;
+        for (let i=0;i<arr.length;i++){
+            if(arr[i]===2){
+                startPosition=i;
+                startRow=maze.indexOf(arr);
+            }else if(arr[i]===3){
+                finishPosition=i;
+                finishRow=maze.indexOf(arr);
+
+            }
         }
-        row++;  
+       
     }
-    console.log(width);
+    // console.log(width);
     console.log(startPosition);
-    console.log(row);
+    console.log(finishPosition);
+    console.log(finishRow);
+    console.log(startRow);
   }
 
   var maze = [[1,1,1,1,1,1,1],
