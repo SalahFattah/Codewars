@@ -1,9 +1,7 @@
 function mazeRunner(maze, directions) {
     // Code here
     let startPosition;
-    let finishPosition;
-    let startRow=0;
-    let finishRow=0;
+    let startRow;
     let currentPosition;
     let currentRow;
     for(let arr of maze){
@@ -11,41 +9,29 @@ function mazeRunner(maze, directions) {
             if(arr[i]===2){
                 startPosition=i;
                 startRow=maze.indexOf(arr);
-            }else if(arr[i]===3){
-                finishPosition=i;
-                finishRow=maze.indexOf(arr);
-
             }
         }
     }
     currentPosition=startPosition;
     currentRow=maze[startRow];
-    let rowIndex=startRow;
-    // console.log(currentPosition);
-    // console.log(currentRow)
     let result;
         for(let i of directions){
             switch(i){
                 case "N":
-                    rowIndex--;
-                    currentRow=maze[rowIndex];
+                    startRow--;
+                    currentRow=maze[startRow];
                     if(currentRow===undefined||currentRow[currentPosition]===1){
-                        // console.log("safe");
                         result="Dead";
                     }else if(currentRow[currentPosition]===3){
                         result="Finish";
-                        // console.log("finish");
                     }else{
-                        // console.log("safe");
                         result="Lost";
                     }
                     
-                    // console.log(result);
-                    
                     break;
                 case "S":
-                    rowIndex++;
-                    currentRow=maze[rowIndex];
+                    startRow++;
+                    currentRow=maze[startRow];
                     
                     if(currentRow===undefined || currentRow[currentPosition]===1){
                         result="Dead";
@@ -55,7 +41,6 @@ function mazeRunner(maze, directions) {
                     }else{
                         result="Lost";
                     }
-                    // console.log(result);
 
                         
                     break;
@@ -70,10 +55,6 @@ function mazeRunner(maze, directions) {
                         result="Lost";
                     }
                     
-                    // console.log(result);
-
-                    // console.log(currentPosition);
-                    
                     break;
                 case "W":
                     currentPosition--;
@@ -86,9 +67,6 @@ function mazeRunner(maze, directions) {
                     }else{
                         result="Lost";
                     }
-                    // console.log(result);
-
-                    // console.log(currentPosition);
                     
                     break;
             }
