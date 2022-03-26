@@ -6,6 +6,7 @@ function ipToInt32(ip){
         let str='';
         let secondStr='';
         num[i]=+(num[i]);
+
         while(num[i]>0){
             str+=num[i]%2;
             num[i]=Math.floor(num[i]/2);
@@ -21,7 +22,7 @@ function ipToInt32(ip){
     }
     wholeNum=+("0b"+wholeNum);
     
-    return wholeNum.toString();
+    return +wholeNum.toString();
   }
 
 
