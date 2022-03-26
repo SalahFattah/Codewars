@@ -9,6 +9,6 @@ function bouncingBall(h,  bounce,  window) {
         h=h*bounce;
     }while(h>window);
 
-    return count;
+    return count*2-1;
   }
   console.log(bouncingBall(10.0, 0.66, 1.5));
