@@ -7,7 +7,7 @@ function alphabetPosition(text) {
             newStr+=alpha.indexOf(text[i])+1+" ";
         }
     }
-    return newStr
+    return newStr.trim();
   }
 
   console.log(alphabetPosition("The sunset sets at twelve o' clock."));
