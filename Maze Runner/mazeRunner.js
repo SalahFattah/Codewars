@@ -1,6 +1,5 @@
 function mazeRunner(maze, directions) {
     // Code here
-    let width=maze.length;
     let startPosition;
     let finishPosition;
     let startRow=0;
@@ -24,19 +23,21 @@ function mazeRunner(maze, directions) {
     let rowIndex=startRow;
     // console.log(currentPosition);
     // console.log(currentRow)
-    while(true){
+    let result;
         for(let i of directions){
             switch(i){
                 case "N":
                     rowIndex--;
                     currentRow=maze[rowIndex];
-                    
-                    if(currentRow[startPosition]===0){
-                        console.log("safe");
-                    }else if(currentRow[startPosition]===3){
-                        console.log("finish");
+                    if(currentRow===undefined||currentRow[currentPosition]===1){
+                        // console.log("safe");
+                        result="Dead";
+                    }else if(currentRow[currentPosition]===3){
+                        result="Finish";
+                        // console.log("finish");
                     }else{
-                        console.log("dead");
+                        // console.log("safe");
+                        result="Lost";
                     }
                     
                     // console.log(currentPosition);
@@ -46,23 +47,24 @@ function mazeRunner(maze, directions) {
                     rowIndex++;
                     currentRow=maze[rowIndex];
                     
-                    if(currentRow[startPosition]===0){
-                        console.log("safe");
-                    }else if(currentRow[startPosition]===3){
-                        console.log("finish");
+                    if(currentRow===undefined || currentRow[currentPosition]===1){
+                        result="Dead";
+                    }else if(currentRow[currentPosition]===3){
+                        result="Finish";
                     }else{
-                        console.log("dead");
+                        result="Lost";
                     }
                         
-                        break;
+                    break;
                 case "E":
                     currentPosition++;
-                    if(currentRow[currentPosition]===0){
-                        console.log("safe");
+                    
+                    if(currentRow[currentPosition]===1 || currentRow[currentPosition]===undefined){
+                        result="Dead";
                     }else if(currentRow[currentPosition]===3){
-                        console.log("finish");
+                        result="Finish";
                     }else{
-                        console.log("dead");
+                        result="Lost";
                     }
                     
                     
@@ -70,13 +72,14 @@ function mazeRunner(maze, directions) {
                     
                     break;
                 case "W":
-                    currentPosition--;
-                    if(currentRow[currentPosition]===0){
-                        console.log("safe");
+                    // currentPosition--;
+                    
+                    if(currentRow[currentPosition]===1 || currentRow[currentPosition]===undefined){
+                        result="Dead";
                     }else if(currentRow[currentPosition]===3){
-                        console.log("finish");
+                        result="Finish";
                     }else{
-                        console.log("dead");
+                        result="Lost";
                     }
                     
                     // console.log(currentPosition);
@@ -84,15 +87,9 @@ function mazeRunner(maze, directions) {
                     break;
             }
         }
-        break;
-    }
+        
+return result;
 
-
-    // console.log(width);
-    // console.log(startPosition);
-    // console.log(finishPosition);
-    // console.log(finishRow);
-    // console.log(startRow);
   }
 
   var maze = [[1,1,1,1,1,1,1],
@@ -102,4 +99,4 @@ function mazeRunner(maze, directions) {
             [1,0,1,0,1,0,1],
             [1,0,0,0,0,0,1],
             [1,2,1,0,1,0,1]];
-mazeRunner(maze,["N","N","N","N","N","E","E","S","S","E","E","N","N","E"]);
+console.log(mazeRunner(maze,["N","N","N","N","N","E","E","S","S","S","S","S","S"]));
