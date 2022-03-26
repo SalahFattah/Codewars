@@ -1,6 +1,7 @@
 function ipToInt32(ip){
     //...
     let num=ip.split(".");
+    let wholeNum='';
     for(let i=0;i<num.length;i++ ){
         let str='';
         let secondStr='';
@@ -12,10 +13,15 @@ function ipToInt32(ip){
         for(let i=str.length-1;i>=0;i--){
             secondStr+=str[i];
         }
+        if(secondStr.length<8){
+            secondStr=secondStr.padStart(8,0);
+        }
+        wholeNum+=secondStr;
         
-        // console.log(secondStr);
     }
-    // console.log(num)
+    wholeNum=+("0b"+wholeNum);
+    
+    return wholeNum.toString();
   }
 
 
