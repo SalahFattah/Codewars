@@ -72,7 +72,7 @@ function mazeRunner(maze, directions) {
                     
                     break;
                 case "W":
-                    // currentPosition--;
+                    currentPosition--;
                     
                     if(currentRow[currentPosition]===1 || currentRow[currentPosition]===undefined){
                         result="Dead";
@@ -99,4 +99,4 @@ return result;
             [1,0,1,0,1,0,1],
             [1,0,0,0,0,0,1],
             [1,2,1,0,1,0,1]];
-console.log(mazeRunner(maze,["N","N","N","N","N","E","E","S","S","S","S","S","S"]));
+console.log(mazeRunner(maze,["N","N","N","W","W"]));
